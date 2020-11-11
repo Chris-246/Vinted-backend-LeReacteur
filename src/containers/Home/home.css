@@ -1,0 +1,43 @@
+/* Header of home page */
+
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 100px;
+  height: 50px;
+}
+
+/* Main of home page */
+
+/* principal image */
+.home-principal-image {
+  width: 100%;
+}
+
+.useravatar {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+
+.offers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.offerbox {
+  margin-bottom: 10px;
+}
+
+.offerbox:not(:nth-child(4n)) {
+  margin-right: 10px;
+}
