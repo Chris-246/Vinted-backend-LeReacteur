@@ -41,3 +41,8 @@
 .offerbox:not(:nth-child(4n)) {
   margin-right: 10px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-around;
+}
