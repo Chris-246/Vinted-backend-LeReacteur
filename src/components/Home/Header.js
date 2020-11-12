@@ -11,7 +11,7 @@ const Header = () => {
 
       <input placeholder="Recherche article"></input>
       <div>
-        <button>S'inscrire</button>
+        <Link to="/signup">S'inscrire</Link>
         <button>Se connecter</button>
       </div>
 
