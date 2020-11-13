@@ -1,48 +1,120 @@
-/* Header of home page */
-
-.container {
-  width: 1240px;
-  margin: 0 auto;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  width: 100px;
-  height: 50px;
-}
-
 /* Main of home page */
 
 /* principal image */
+
+.homeFirstElement {
+  position: relative;
+  box-sizing: border-box;
+}
 .home-principal-image {
   width: 100%;
+  height: 455px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.homeCube {
+  width: 410px;
+  height: 270px;
+  padding: 25px;
+  position: absolute;
+  top: 75px;
+  left: 80px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+
+.homeCube p {
+  font-size: 34px;
+}
+
+.homeCube button {
+  margin-top: 30px;
+  padding: 1px 5px;
+  width: 185px;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: #2cb1da;
+  color: white;
+}
+
+/* Second part of home page : presentation of articles */
+
+.offersArticles {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 50px auto auto;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
+
+.offerbox {
+  margin-bottom: 15px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  width: 235px;
+  text-decoration: none;
+}
+
+.offerUser {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #999999;
 }
 
 .useravatar {
   border-radius: 50%;
   width: 25px;
   height: 25px;
-}
-
-.offers {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.offerbox {
-  margin-bottom: 10px;
-}
-
-.offerbox:not(:nth-child(4n)) {
   margin-right: 10px;
 }
 
+.productImage {
+  width: 100%;
+}
+
+.offerInfo {
+  font-size: 12px;
+  padding: 8px;
+}
+
+.offerInfo p:first-child {
+  color: black;
+  font-weight: bold;
+}
+
+.offerInfo p:not(:first-child) {
+  color: #999999;
+}
+
+/* Pagination en bas */
 .pagination {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.pagination li {
+  font-weight: bold;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  box-sizing: border-box;
+  border: solid 1px #2cb1da;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2cb1da;
 }

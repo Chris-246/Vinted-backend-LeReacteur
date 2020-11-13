@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Home/Header";
 import Main from "../../components/Home/Main";
 import axios from "axios";
 
@@ -30,7 +29,6 @@ const Home = () => {
   //
   return (
     <div>
-      <Header />
       <Main isLoading={isLoading} data={data} setPage={setPage} />
     </div>
   );

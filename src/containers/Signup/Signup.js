@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Header from "../../components/Home/Header";
+import { useHistory } from "react-router-dom";
 
-const Signup = ({ setUser, setToken, token }) => {
+const Signup = ({ setUser }) => {
   //on récupère les infos rentrées par l'utilisateur dans une state générale qui servira de tableau d'objets (à envoyer ensuite en requête)
   const [userInfo, setUserInfo] = useState({});
 
@@ -11,18 +11,24 @@ const Signup = ({ setUser, setToken, token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
 
   //fonction requête axios pour les données
-  const fetchData = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         userInfo
       );
-      console.log(response.data.token);
-
-      setIsLoading(false);
+      if (response.data.token) {
+        setUser(response.data.token);
+        history.push("/");
+      } else {
+        setUser(null);
+        alert("Error in sign up");
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -34,17 +40,16 @@ const Signup = ({ setUser, setToken, token }) => {
 
   return (
     <div>
-      <Header />
       <main>
         <form
           onSubmit={(event) => {
-            event.preventDefault();
-            // console.log(userName, email, password);
+            handleSubmit(event);
           }}
         >
           <input
             placeholder="Nom d'utilisateur"
             type="text"
+            value={userName}
             onChange={(event) => {
               setUserName(event.target.value);
             }}
@@ -52,6 +57,7 @@ const Signup = ({ setUser, setToken, token }) => {
           <input
             placeholder="Adresse mail"
             type="email"
+            value={email}
             onChange={(event) => {
               setEmail(event.target.value);
             }}
@@ -59,6 +65,7 @@ const Signup = ({ setUser, setToken, token }) => {
           <input
             placeholder="Mot de passe"
             type="password"
+            value={password}
             onChange={(event) => {
               setPassword(event.target.value);
             }}
@@ -69,11 +76,8 @@ const Signup = ({ setUser, setToken, token }) => {
               setUserInfo({
                 email: email,
                 username: userName,
-                phone: "0645728176",
                 password: password,
               });
-
-              fetchData();
             }}
           >
             S'inscrire

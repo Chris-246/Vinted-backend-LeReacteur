@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Home/Header";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -30,7 +29,6 @@ const Offer = () => {
     <div>Page is loading ...</div>
   ) : (
     <div>
-      <Header />
       <main>
         <div className="product-images">
           <img src={data.product_pictures[0].secure_url} alt="product" />

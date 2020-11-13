@@ -15,37 +15,39 @@ const Main = ({ data, isLoading, setPage }) => {
   return isLoading ? (
     <span>Page is loading ...</span>
   ) : (
-    <main>
-      <div>
+    <main className="container">
+      <div className="homeFirstElement">
         <img
           src={mainPhoto}
           alt="principale menu principal"
           className="home-principal-image"
         />
+        <div className="homeCube">
+          <p>Prêts à faire du tri dans vos placards ?</p>
+          <button className="beginSelling">Commencer à vendre</button>
+        </div>
       </div>
-      <div className="offers container">
+      <div className="offersArticles">
         {data.offers.map((item, index) => {
           return (
-            <Link to={`/Offer/${item._id}`}>
-              <div key={index} className="offerbox">
-                <div className="offer-user">
-                  <img
-                    src={item.owner.account.avatar.secure_url}
-                    alt="user avatar"
-                    className="useravatar"
-                  />{" "}
-                  {item.owner.account.username}
-                </div>
+            <Link to={`/Offer/${item._id}`} key={index} className="offerbox">
+              <div className="offerUser">
                 <img
-                  src={item.product_image.secure_url}
-                  alt="product"
-                  className="product-image"
-                />
-                <div>
-                  <p>{item.product_price} €</p>
-                  <p>{item.product_details[1].TAILLE}</p>
-                  <p>{item.product_details[0].MARQUE}</p>
-                </div>
+                  src={item.owner.account.avatar.secure_url}
+                  alt="user avatar"
+                  className="useravatar"
+                />{" "}
+                {item.owner.account.username}
+              </div>
+              <img
+                src={item.product_image.secure_url}
+                alt="product"
+                className="productImage"
+              />
+              <div className="offerInfo">
+                <p>{item.product_price} €</p>
+                <p>{item.product_details[1].TAILLE}</p>
+                <p>{item.product_details[0].MARQUE}</p>
               </div>
             </Link>
           );

@@ -1,1 +1,90 @@
+/* Header of home page */
 
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 10px 0;
+}
+
+.logo {
+  width: 80px;
+  height: 35px;
+}
+
+/* recherche d'article */
+.articleSearch {
+  width: 635px;
+  height: 40px;
+  padding: 1px 2px 1px 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #f5f6f7;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.articleSearch input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  color: #cbcccd;
+  background-color: #f5f6f7;
+}
+
+.iconSearch {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 10px;
+  color: #bbbbbb;
+}
+
+/* Boutons s'inscrire et se connecter et vente article */
+
+.getStart {
+  width: 250px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inscriptionButton,
+.connectButton {
+  padding: 1px 6px;
+  border-radius: 5px;
+  border: solid 1px #2cb1da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 115px;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #2cb1da;
+  font-size: 12px;
+}
+
+.sellArticle {
+  width: 115px;
+  height: 30px;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #2cb1da;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
