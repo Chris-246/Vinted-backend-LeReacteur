@@ -15,8 +15,8 @@ const Main = ({ data, isLoading, setPage }) => {
   return isLoading ? (
     <span>Page is loading ...</span>
   ) : (
-    <main className="container">
-      <div className="homeFirstElement">
+    <main className="home-main">
+      <div className="home-container">
         <img
           src={mainPhoto}
           alt="principale menu principal"
@@ -26,47 +26,53 @@ const Main = ({ data, isLoading, setPage }) => {
           <p>Prêts à faire du tri dans vos placards ?</p>
           <button className="beginSelling">Commencer à vendre</button>
         </div>
+        <div className="homeFirstElement">
+          <div className="offersArticles">
+            {data.offers.map((item, index) => {
+              return (
+                <Link
+                  to={`/Offer/${item._id}`}
+                  key={index}
+                  className="offerbox"
+                >
+                  <div className="offerUser">
+                    <img
+                      src={item.owner.account.avatar.secure_url}
+                      alt="user avatar"
+                      className="useravatar"
+                    />{" "}
+                    {item.owner.account.username}
+                  </div>
+                  <img
+                    src={item.product_image.secure_url}
+                    alt="product"
+                    className="productImage"
+                  />
+                  <div className="offerInfo">
+                    <p>{item.product_price} €</p>
+                    <p>{item.product_details[1].TAILLE}</p>
+                    <p>{item.product_details[0].MARQUE}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <ul className="pagination">
+            {numPages.map((page, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={() => {
+                    setPage(page);
+                  }}
+                >
+                  {page}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      <div className="offersArticles">
-        {data.offers.map((item, index) => {
-          return (
-            <Link to={`/Offer/${item._id}`} key={index} className="offerbox">
-              <div className="offerUser">
-                <img
-                  src={item.owner.account.avatar.secure_url}
-                  alt="user avatar"
-                  className="useravatar"
-                />{" "}
-                {item.owner.account.username}
-              </div>
-              <img
-                src={item.product_image.secure_url}
-                alt="product"
-                className="productImage"
-              />
-              <div className="offerInfo">
-                <p>{item.product_price} €</p>
-                <p>{item.product_details[1].TAILLE}</p>
-                <p>{item.product_details[0].MARQUE}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-      <ul className="pagination">
-        {numPages.map((page, index) => {
-          return (
-            <li
-              key={index}
-              onClick={() => {
-                setPage(page);
-              }}
-            >
-              {page}
-            </li>
-          );
-        })}
-      </ul>
     </main>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
 
 const Offer = () => {
   //useState pour récupérer les données qu'on va traiter
@@ -28,21 +29,30 @@ const Offer = () => {
   return isLoading ? (
     <div>Page is loading ...</div>
   ) : (
-    <div>
-      <main>
-        <div className="product-images">
-          <img src={data.product_pictures[0].secure_url} alt="product" />
-        </div>
+    <main className="main">
+      <div className="offerContainer">
+        <Carousel showThumbs={false} axis="horizontal" showArrows={true}>
+          {data.product_pictures.map((picture, index) => {
+            return (
+              <div key={index}>
+                <img src={picture.secure_url} alt={`product ${index}`} />
+              </div>
+            );
+          })}
+        </Carousel>
+
+        {/* Information part */}
+
         <div className="product-details">
           {/* On récupère les infos du produit */}
-          <div>{data.product_price}</div>
-          <ul>
+          <div className="price">{data.product_price} €</div>
+          <ul className="information">
             {data.product_details.map((detail, index) => {
               const cle = Object.keys(detail);
 
               return (
                 <li key={index}>
-                  {cle[0]} {detail[cle[0]]}
+                  <div>{cle[0]}</div> <div>{detail[cle[0]]}</div>
                 </li>
               );
             })}
@@ -57,14 +67,14 @@ const Offer = () => {
               <img
                 src={data.owner.account.avatar.secure_url}
                 alt="user avatar"
-                className="useravatar"
+                className="useravatarOffer"
               />{" "}
-              {data.owner.account.username}
+              <p>{data.owner.account.username}</p>
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 

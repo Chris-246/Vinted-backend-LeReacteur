@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = ({ token, setUser }) => {
   return (
-    <header className="header container">
+    <header className="headerContainer">
       <Link to="/">
         <img className="logo" src={logo} alt="logo de vinted" />
       </Link>

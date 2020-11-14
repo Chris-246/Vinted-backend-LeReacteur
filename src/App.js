@@ -1,5 +1,6 @@
 import "./App.css";
 import "./containers/Home/home.css";
+import "./containers/Offer/offer.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import Offer from "./containers/Offer/Offer";
