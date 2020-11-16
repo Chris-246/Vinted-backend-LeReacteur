@@ -64,11 +64,15 @@ const Offer = () => {
             <div>{data.product_description}</div>
 
             <div>
-              <img
-                src={data.owner.account.avatar.secure_url}
-                alt="user avatar"
-                className="useravatarOffer"
-              />{" "}
+              {data.owner.account.avatar ? (
+                <img
+                  src={data.owner.account.avatar.secure_url}
+                  alt="user avatar"
+                  className="useravatarOffer"
+                />
+              ) : (
+                <div></div>
+              )}{" "}
               <p>{data.owner.account.username}</p>
             </div>
           </div>

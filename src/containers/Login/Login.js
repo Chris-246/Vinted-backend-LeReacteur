@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, showModalLog, setShowModalLog }) => {
   // revenir sur la page principale
   const history = useHistory();
 
@@ -23,6 +23,7 @@ const Login = ({ setUser }) => {
       if (response.data.token) {
         setUser(response.data.token);
         history.push("/");
+        setShowModalLog(false);
       } else {
         setUser(null);
         alert("Wrong email address/password");
@@ -33,39 +34,59 @@ const Login = ({ setUser }) => {
     }
   };
   return (
-    <main>
-      <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
-      >
-        <input
-          type="email"
-          placeholder="Adresse mail"
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        ></input>
-        <input
-          type="password"
-          placeholder="Mot de passe"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        ></input>
-        <button
-          type="submit"
-          onClick={() => {
-            setUserInfo({
-              email: email,
-              password: password,
-            });
-          }}
-        >
-          Se connecter
-        </button>
-      </form>
-    </main>
+    <div>
+      {!showModalLog ? null : (
+        <div>
+          <div className="formContainer">
+            <button
+              className="exitInscription"
+              onClick={() => {
+                setShowModalLog(false);
+              }}
+            >
+              X
+            </button>
+            <h2>Se connecter</h2>
+            <form
+              className="loginForm"
+              onSubmit={(event) => {
+                handleSubmit(event);
+              }}
+            >
+              <div>
+                <input
+                  type="email"
+                  placeholder="Adresse mail"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                ></input>
+                <input
+                  type="password"
+                  placeholder="Mot de passe"
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                ></input>
+              </div>
+
+              <button
+                type="submit"
+                onClick={() => {
+                  setUserInfo({
+                    email: email,
+                    password: password,
+                  });
+                }}
+              >
+                Se connecter
+              </button>
+            </form>
+          </div>
+          <main className="login-main"></main>
+        </div>
+      )}
+    </div>
   );
 };
 

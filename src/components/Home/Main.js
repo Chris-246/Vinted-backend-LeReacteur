@@ -36,11 +36,15 @@ const Main = ({ data, isLoading, setPage }) => {
                   className="offerbox"
                 >
                   <div className="offerUser">
-                    <img
-                      src={item.owner.account.avatar.secure_url}
-                      alt="user avatar"
-                      className="useravatar"
-                    />{" "}
+                    {item.owner.account.avatar ? (
+                      <img
+                        src={item.owner.account.avatar.secure_url}
+                        alt="user avatar"
+                        className="useravatar"
+                      />
+                    ) : (
+                      <div></div>
+                    )}{" "}
                     {item.owner.account.username}
                   </div>
                   <img

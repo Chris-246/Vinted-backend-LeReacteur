@@ -3,7 +3,7 @@ import logo from "../../img/logo_vinted.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ token, setUser }) => {
+const Header = ({ token, setUser, setShowModalSign, setShowModalLog }) => {
   return (
     <header className="headerContainer">
       <Link to="/">
@@ -25,16 +25,36 @@ const Header = ({ token, setUser }) => {
         </button>
       ) : (
         <div className="getStart">
-          <Link to="/signup" className="inscriptionButton">
+          <button
+            className="inscriptionButton"
+            onClick={() => {
+              setShowModalSign(true);
+            }}
+          >
             S'inscrire
-          </Link>
-          <Link to="/login" className="connectButton">
+          </button>
+          <button
+            className="connectButton"
+            onClick={() => {
+              setShowModalLog(true);
+            }}
+          >
             Se connecter
-          </Link>
+          </button>
         </div>
       )}
 
-      <button className="sellArticle">Vends tes articles</button>
+      <Link
+        to="/publish"
+        className="sellArticle"
+        onClick={() => {
+          if (!token) {
+            setShowModalLog(true);
+          }
+        }}
+      >
+        Vends tes articles
+      </Link>
     </header>
   );
 };

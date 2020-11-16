@@ -1,0 +1,70 @@
+.publishPage {
+  display: flex;
+  justify-content: center;
+}
+.publishForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 600px;
+  padding: 20px 10px;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.publishForm input {
+  outline: none;
+  border: none;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  font-size: 14px;
+}
+
+.publishForm input:not(.fileInput) {
+  border-bottom: solid 1px grey;
+}
+
+.publishForm textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  border-bottom: solid 1px grey;
+  text-align: center;
+  font-family: inherit;
+}
+
+.publishForm .fileInput {
+  align-self: center;
+}
+
+.publishForm button {
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  height: 50px;
+  background-color: #2cb1da;
+  color: white;
+  border-radius: 5px;
+}
+
+.publishForm button:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px #999999;
+}
+
+/* Format de dropzone */
+.dropzoneWrapper {
+  width: 100%;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px #eeeeee dashed;
+  border-radius: 5px;
+  color: #999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

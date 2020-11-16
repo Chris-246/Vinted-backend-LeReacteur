@@ -68,6 +68,19 @@
   box-sizing: border-box;
   color: #2cb1da;
   font-size: 12px;
+  background-color: transparent;
+}
+
+.connectButton:hover,
+.inscriptionButton:hover {
+  cursor: pointer;
+  background-color: #2cb1da;
+  color: white;
+}
+
+.connectButton:focus,
+.inscriptionButton:focus {
+  outline: none;
 }
 
 .sellArticle {
