@@ -19,7 +19,9 @@ const Publish = ({ token }) => {
   // fonctions utilisées pour le dropzone
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
-  const file = acceptedFiles[0];
+  const files = acceptedFiles.map((file) => (
+    <li key={file.path}>{file.path}</li>
+  ));
 
   //création de l'objet de type formData pour inclure la photo
   const formData = new FormData();
@@ -32,7 +34,7 @@ const Publish = ({ token }) => {
   formData.append("size", size);
   formData.append("color", color);
   formData.append("price", price);
-  formData.append("picture", file);
+  formData.append("picture", acceptedFiles);
 
   // console.log(formData.get("picture"));
 
@@ -141,7 +143,7 @@ const Publish = ({ token }) => {
             <input {...getInputProps()} />
             <p>Glisser/déposer le fichier ou cliquez ici</p>
           </div>
-          {file ? <p>{file.path}</p> : null}
+          <div className="filesToUpload">{files}</div>
         </section>
 
         <button type="submit">Poster l'offre</button>

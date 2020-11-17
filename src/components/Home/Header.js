@@ -3,7 +3,13 @@ import logo from "../../img/logo_vinted.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ token, setUser, setShowModalSign, setShowModalLog }) => {
+const Header = ({
+  token,
+  setUser,
+  setShowModalSign,
+  setShowModalLog,
+  setFromPublish,
+}) => {
   return (
     <header className="headerContainer">
       <Link to="/">
@@ -16,7 +22,7 @@ const Header = ({ token, setUser, setShowModalSign, setShowModalLog }) => {
 
       {token ? (
         <button
-          className="connect"
+          className="disconnect"
           onClick={() => {
             setUser(null);
           }}
@@ -50,6 +56,7 @@ const Header = ({ token, setUser, setShowModalSign, setShowModalLog }) => {
         onClick={() => {
           if (!token) {
             setShowModalLog(true);
+            setFromPublish(true);
           }
         }}
       >

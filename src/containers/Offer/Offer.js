@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
+import { Link, useHistory } from "react-router-dom";
 
-const Offer = () => {
+const Offer = ({ token, setShowModalLog }) => {
+  const history = useHistory();
+
   //useState pour récupérer les données qu'on va traiter
   const [data, setData] = useState({});
 
@@ -31,18 +34,39 @@ const Offer = () => {
   ) : (
     <main className="main">
       <div className="offerContainer">
-        <Carousel showThumbs={false} axis="horizontal" showArrows={true}>
-          {data.product_pictures.map((picture, index) => {
-            return (
-              <div key={index}>
-                <img src={picture.secure_url} alt={`product ${index}`} />
-              </div>
-            );
-          })}
-        </Carousel>
+        {data.product_pictures.length === 0 ? (
+          <img
+            src={data.product_image.secure_url}
+            alt="uniquephoto"
+            className="uniquePhoto"
+          />
+        ) : (
+          <Carousel showThumbs={false} axis="horizontal" showArrows={true}>
+            {data.product_pictures.map((picture, index) => {
+              return (
+                <div key={index}>
+                  <img src={picture.secure_url} alt={`product ${index}`} />
+                </div>
+              );
+            })}
+          </Carousel>
+        )}
+
+        {/* <Carousel showThumbs={false} axis="horizontal" showArrows={true}>
+          {data.product_pictures !== [] ? (
+            data.product_pictures.map((picture, index) => {
+              return (
+                <div key={index}>
+                  <img src={picture.secure_url} alt={`product ${index}`} />
+                </div>
+              );
+            })
+          ) : (
+            <img src={data.product_image.secure_url} alt="uniquephoto" />
+          )}
+        </Carousel> */}
 
         {/* Information part */}
-
         <div className="product-details">
           {/* On récupère les infos du produit */}
           <div className="price">{data.product_price} €</div>
@@ -63,7 +87,7 @@ const Offer = () => {
 
             <div>{data.product_description}</div>
 
-            <div>
+            <div className="userInformationOffer">
               {data.owner.account.avatar ? (
                 <img
                   src={data.owner.account.avatar.secure_url}
@@ -76,6 +100,22 @@ const Offer = () => {
               <p>{data.owner.account.username}</p>
             </div>
           </div>
+          <button
+            onClick={() => {
+              if (token) {
+                history.push("/payment", {
+                  title: data.product_name,
+                  amount: data.product_price,
+                  id: data.owner._id,
+                });
+              } else {
+                history.push("/");
+                setShowModalLog(true);
+              }
+            }}
+          >
+            Acheter
+          </button>
         </div>
       </div>
     </main>
@@ -83,3 +123,5 @@ const Offer = () => {
 };
 
 export default Offer;
+
+// {token ? "/payment" : "/login"}

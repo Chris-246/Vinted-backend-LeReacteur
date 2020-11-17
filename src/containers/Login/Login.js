@@ -1,8 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
-const Login = ({ setUser, showModalLog, setShowModalLog }) => {
+const Login = ({
+  setUser,
+  showModalLog,
+  setShowModalLog,
+  fromPublish,
+  setFromPublish,
+}) => {
   // revenir sur la page principale
   const history = useHistory();
 
@@ -22,15 +28,20 @@ const Login = ({ setUser, showModalLog, setShowModalLog }) => {
       );
       if (response.data.token) {
         setUser(response.data.token);
-        history.push("/");
         setShowModalLog(false);
+        if (fromPublish) {
+          history.push("/publish");
+          setFromPublish(false);
+        } else {
+          history.push("/");
+        }
       } else {
         setUser(null);
         alert("Wrong email address/password");
       }
       console.log(response.data);
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response);
     }
   };
   return (

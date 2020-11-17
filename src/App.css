@@ -71,6 +71,18 @@
   background-color: transparent;
 }
 
+.disconnect {
+  padding: 1px 6px;
+  border-radius: 5px;
+  border: solid 1px #2cb1da;
+  height: 30px;
+  width: 115px;
+  background-color: transparent;
+  color: #2cb1da;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
 .connectButton:hover,
 .inscriptionButton:hover {
   cursor: pointer;
@@ -81,6 +93,12 @@
 .connectButton:focus,
 .inscriptionButton:focus {
   outline: none;
+}
+
+.disconnect:hover {
+  background-color: #2cb1da;
+  color: white;
+  box-shadow: 1px 1px 1px #999999;
 }
 
 .sellArticle {

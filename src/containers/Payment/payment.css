@@ -1,0 +1,83 @@
+/* .mainPayment {
+  background-color: #eaedee;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+} */
+
+.paymentWrapper {
+  background-color: #eaedee;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  /* justify-content: center; */
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  /* background-color: white; */
+  /* width: 600px;
+  height: 600px; */
+  /* padding: 25px;
+  margin-top: 30px; */
+}
+
+.paymentWrapper .pricesInformation {
+  width: 600px;
+  height: 200px;
+  background-color: white;
+  margin-bottom: 5px;
+  padding: 30px 25px 55px 25px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.paymentWrapper .pricesInformation ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.paymentWrapper .pricesInformation ul > li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.paymentWrapper .paymentInformation {
+  height: 300px;
+  width: 600px;
+  background-color: white;
+  padding: 55px 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.paymentWrapper .paymentInformation div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.paymentWrapper .paymentInformation .StripeElement {
+  box-shadow: 1px 1px 1px grey;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.paymentWrapper .paymentInformation button {
+  height: 50px;
+  outline: none;
+  border: none;
+  background-color: #00c06d;
+  color: white;
+}

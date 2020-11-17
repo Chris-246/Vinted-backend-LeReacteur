@@ -4,6 +4,7 @@ import "./containers/Offer/offer.css";
 import "./containers/Signup/signup.css";
 import "./containers/Login/login.css";
 import "./containers/Publish/publish.css";
+import "./containers/Payment/payment.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +19,7 @@ import { useState } from "react";
 import Header from "./components/Home/Header";
 import Login from "./containers/Login/Login";
 import Publish from "./containers/Publish/Publish";
+import Payment from "./containers/Payment/Payment";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
@@ -31,6 +33,9 @@ function App() {
 
   //state pour activer modal de connexion
   const [showModalLog, setShowModalLog] = useState(false);
+
+  //state pour rediriger le user vers la page de vente
+  const [fromPublish, setFromPublish] = useState(false);
 
   const setUser = (userToken) => {
     if (userToken) {
@@ -49,6 +54,7 @@ function App() {
         setUser={setUser}
         setShowModalSign={setShowModalSign}
         setShowModalLog={setShowModalLog}
+        setFromPublish={setFromPublish}
       />
       <Signup
         setUser={setUser}
@@ -59,13 +65,18 @@ function App() {
         setUser={setUser}
         showModalLog={showModalLog}
         setShowModalLog={setShowModalLog}
+        fromPublish={fromPublish}
+        setFromPublish={setFromPublish}
       />
       <Switch>
         <Route path="/offer/:id">
-          <Offer />
+          <Offer token={token} setShowModalLog={setShowModalLog} />
         </Route>
         <Route path="/publish">
           {token ? <Publish token={token} /> : <Redirect to="/" />}
+        </Route>
+        <Route path="/payment">
+          <Payment />
         </Route>
         <Route path="/">
           <Home />
