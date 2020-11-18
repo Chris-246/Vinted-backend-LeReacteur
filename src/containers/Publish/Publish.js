@@ -19,6 +19,7 @@ const Publish = ({ token }) => {
   // fonctions utilisées pour le dropzone
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
+  // console.log(acceptedFiles);
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>{file.path}</li>
   ));
@@ -34,7 +35,7 @@ const Publish = ({ token }) => {
   formData.append("size", size);
   formData.append("color", color);
   formData.append("price", price);
-  formData.append("picture", acceptedFiles);
+  formData.append("picture", acceptedFiles[0]);
 
   // console.log(formData.get("picture"));
 
@@ -44,7 +45,7 @@ const Publish = ({ token }) => {
 
     //requête axios avec trois argument : url api + formData pour envoyer photo dans le bon format + bearer token
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
         formData,
         {
@@ -53,9 +54,11 @@ const Publish = ({ token }) => {
           },
         }
       );
+      // console.log(response.data);
       history.push("/");
     } catch (error) {
       alert(error.message);
+      console.log(error.response);
     }
   };
 
