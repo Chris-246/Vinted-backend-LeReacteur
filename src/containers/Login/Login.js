@@ -26,8 +26,8 @@ const Login = ({
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         userInfo
       );
-      if (response.data.token) {
-        setUser(response.data.token);
+      if (response.data.token && response.data._id) {
+        setUser(response.data.token, response.data._id);
         setShowModalLog(false);
         if (fromPublish) {
           history.push("/publish");
@@ -36,7 +36,7 @@ const Login = ({
           history.push("/");
         }
       } else {
-        setUser(null);
+        setUser(null, null);
         alert("Wrong email address/password");
       }
       console.log(response.data);

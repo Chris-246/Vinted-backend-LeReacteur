@@ -24,7 +24,7 @@ const Header = ({
         <button
           className="disconnect"
           onClick={() => {
-            setUser(null);
+            setUser(null, null);
           }}
         >
           Déconnexion

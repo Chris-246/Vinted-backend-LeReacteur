@@ -110,7 +110,7 @@
 /* Pagination en bas */
 .pagination {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -127,4 +127,8 @@
   justify-content: center;
   align-items: center;
   background-color: #2cb1da;
+}
+
+.pagination li:not(:last-child) {
+  margin-right: 5px;
 }

@@ -22,12 +22,12 @@ const Signup = ({ setUser, showModalSign, setShowModalSign }) => {
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         userInfo
       );
-      if (response.data.token) {
-        setUser(response.data.token);
+      if (response.data.token && response.data._id) {
+        setUser(response.data.token, response.data._id);
         history.push("/");
         setShowModalSign(false);
       } else {
-        setUser(null);
+        setUser(null, null);
         alert("Error in sign up");
       }
     } catch (error) {

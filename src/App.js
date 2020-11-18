@@ -28,6 +28,8 @@ function App() {
   //State pour stocker le token de l'utilisateur // Cookie.get ou null pour le garder ou non selon utilisateur (voir fonction setUser)
   const [token, setToken] = useState(Cookie.get("userToken") || null);
 
+  const [id, setId] = useState(Cookie.get("userId") || null);
+
   //state pour activer le modal d'inscription ou non
   const [showModalSign, setShowModalSign] = useState(false);
 
@@ -37,13 +39,17 @@ function App() {
   //state pour rediriger le user vers la page de vente
   const [fromPublish, setFromPublish] = useState(false);
 
-  const setUser = (userToken) => {
-    if (userToken) {
+  const setUser = (userToken, userId) => {
+    if (userToken && userId) {
       Cookie.set("userToken", userToken);
+      Cookie.set("userId", userId);
       setToken(userToken);
+      setId(userId);
     } else {
       Cookie.remove("userToken");
+      Cookie.remove("userId");
       setToken(null);
+      setId(null);
     }
   };
 
@@ -70,7 +76,7 @@ function App() {
       />
       <Switch>
         <Route path="/offer/:id">
-          <Offer token={token} setShowModalLog={setShowModalLog} />
+          <Offer token={token} setShowModalLog={setShowModalLog} userId={id} />
         </Route>
         <Route path="/publish">
           {token ? <Publish token={token} /> : <Redirect to="/" />}

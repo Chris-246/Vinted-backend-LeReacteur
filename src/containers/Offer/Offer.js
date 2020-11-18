@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const Offer = ({ token, setShowModalLog }) => {
+const Offer = ({ token, setShowModalLog, userId }) => {
   const history = useHistory();
 
   //useState pour récupérer les données qu'on va traiter
@@ -106,7 +106,7 @@ const Offer = ({ token, setShowModalLog }) => {
                 history.push("/payment", {
                   title: data.product_name,
                   amount: data.product_price,
-                  id: data.owner._id,
+                  id: userId,
                 });
               } else {
                 history.push("/");

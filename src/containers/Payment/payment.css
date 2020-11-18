@@ -1,27 +1,11 @@
-/* .mainPayment {
-  background-color: #eaedee;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-} */
-
 .paymentWrapper {
   background-color: #eaedee;
   width: 100vw;
   height: 100vh;
   position: fixed;
   display: flex;
-  /* justify-content: center; */
-  /* display: flex; */
   flex-direction: column;
   align-items: center;
-  /* background-color: white; */
-  /* width: 600px;
-  height: 600px; */
-  /* padding: 25px;
-  margin-top: 30px; */
 }
 
 .paymentWrapper .pricesInformation {

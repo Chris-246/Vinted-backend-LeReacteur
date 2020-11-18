@@ -74,11 +74,11 @@
 .disconnect {
   padding: 1px 6px;
   border-radius: 5px;
-  border: solid 1px #2cb1da;
+  border: solid 1px #c2175b;
   height: 30px;
   width: 115px;
-  background-color: transparent;
-  color: #2cb1da;
+  background-color: #c2175b;
+  color: white;
   font-size: 12px;
   box-sizing: border-box;
 }
@@ -93,12 +93,6 @@
 .connectButton:focus,
 .inscriptionButton:focus {
   outline: none;
-}
-
-.disconnect:hover {
-  background-color: #2cb1da;
-  color: white;
-  box-shadow: 1px 1px 1px #999999;
 }
 
 .sellArticle {
